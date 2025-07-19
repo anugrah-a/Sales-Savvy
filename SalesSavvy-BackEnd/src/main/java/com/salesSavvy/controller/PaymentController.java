@@ -109,5 +109,5 @@ public class PaymentController {
 						"price", ci.getProduct().getPrice()
 						)).toList()
 				);
-	}
+	} 
 }
