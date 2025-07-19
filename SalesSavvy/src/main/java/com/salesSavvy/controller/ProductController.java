@@ -110,7 +110,6 @@ public class ProductController {
 			cart = new Cart();
 			cart.setUser(user);
 			user.setCart(cart);
-			
 			cartService.addCart(cart);	
 		}
 		
