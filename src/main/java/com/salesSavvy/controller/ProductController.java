@@ -37,11 +37,6 @@ public class ProductController {
 	UsersService usersService;
 	@Autowired
 	CartService cartService;
-
-
-    
-    
-	
 	@PostMapping("/addProduct")
 	public String addProduct(@RequestBody Product product)
 	{

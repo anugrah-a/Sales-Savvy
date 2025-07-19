@@ -17,7 +17,6 @@ import com.salesSavvy.dto.UserUpdate;
 import com.salesSavvy.dto.UsernameRequest;
 import com.salesSavvy.entity.Users;
 import com.salesSavvy.entity.userLoginData;
-import com.salesSavvy.repository.UsersRepository;
 import com.salesSavvy.service.ProductService;
 import com.salesSavvy.service.UsersService;
 
@@ -27,16 +26,12 @@ import com.salesSavvy.service.UsersService;
 @RequestMapping("/users")
 public class UsersController {
 
-    private final UsersRepository usersRepository;
+ 
 	@Autowired
 	UsersService usersService;
 	@Autowired
 	ProductService productService;
 
-    UsersController(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
-	
 	@PostMapping("/signUp")
 	public String signUp(@RequestBody Users user) {
 		//TODO: process POST request
@@ -83,7 +78,7 @@ public class UsersController {
 	
 	@GetMapping("/data")
 	public String data() {
-		//TODO: process POST request
+		
 		
 		System.out.println("Request Recieved");
 		
