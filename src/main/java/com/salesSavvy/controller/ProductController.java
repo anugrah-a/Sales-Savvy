@@ -47,10 +47,10 @@ public class ProductController {
 	}
 	
 	@PutMapping("/updateProduct") 
-	public String updateProduct(@RequestBody Product product) {
+	public ResponseEntity<?> updateProduct(@RequestBody Product product) {
 		//TODO: process POST request
 		
-		return productService.updateProduct(product);
+		return ResponseEntity.ok().body("product updated");
 	}
 	
 	@GetMapping("/searchProduct")
