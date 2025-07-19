@@ -73,16 +73,16 @@ public class ProductController {
 		
 	}
 	
-	/*
-	@GetMapping("/searchProduct")
-	public Product searchProduct(@RequestParam String name) {
-		return productService.searchProduct(name);
-	}
-	
-	*/
-	@DeleteMapping("/removeProduct")
-	public String removeProduct(@RequestParam int id) {
-		return productService.deleteProduct(id);
+	@DeleteMapping("/deleteProduct")
+	public ResponseEntity<?> removeProduct(@RequestParam Integer productId) {
+		if(productId  == null ) {
+			return ResponseEntity.badRequest().body("Id cannot be null");
+		}
+		if(productService.searchProductById(productId) == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product does not exist");
+		}
+		productService.deleteProduct(productId);
+		return ResponseEntity.ok().body("Product deleted");
 	}
 	
 	@GetMapping("/getAllProduct")
@@ -100,7 +100,7 @@ public class ProductController {
 			return  "user not found";
 		}
 		
-		Product product = productService.searchProduct(data.getProductId());
+		Product product = productService.searchProductById(data.getProductId());
 		if(product == null) {
 			return "product not found";
 		}
@@ -160,6 +160,7 @@ public class ProductController {
 		}
 		
 	}
+	
 	
 	@DeleteMapping("/clearCart")
 	public void clearCart(String username) {

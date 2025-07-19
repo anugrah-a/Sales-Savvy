@@ -2,15 +2,18 @@ package com.salesSavvy.repository;
 
 
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.salesSavvy.entity.Product;
-import java.util.List;
 
 
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	
+	Optional<Product> findById(int id);
 	Product findById(Long id);
 	Product findByName(String name);
 	void deleteById(int id);
