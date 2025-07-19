@@ -34,7 +34,7 @@ public class UsersController {
 
 	@PostMapping("/signUp")
 	public String signUp(@RequestBody Users user) {
-		//TODO: process POST request
+		
 		String msg ="";
 		String username = user.getUsername();
 		Users u = usersService.getUser(username);
@@ -67,15 +67,15 @@ public class UsersController {
 				else {
 					msg = "customer";
 				}
-					
-					
+
+
 			}
 			else
 				msg = "wrong password";
 		}
 		return msg;
 	}
-	
+
 	@GetMapping("/data")
 	public String data() {
 		
