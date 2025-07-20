@@ -1,0 +1,36 @@
+.button {
+    font-family: 'Segoe UI', sans-seriff;
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #263238;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #455A64;
+}
+
+.switchButton {
+    width: 50%;
+    margin: 15px auto 0; /* ✅ Top margin, center horizontally */
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #263238;
+    color: #263238;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block; /* ✅ Required for margin: auto to work on buttons */
+}
+
+.switchButton:hover {
+    background-color: #263238;
+    color: #ffffff;
+}
+
