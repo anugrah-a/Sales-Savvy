@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../../components/Button'
 import Textbox from '../../components/Textbox';
+import Label from '../../components/Label/Label';
 export default function Delete_product() {
   const [productName, setProductName] = useState("");
   const [product, setProduct] = useState([])
@@ -62,14 +63,14 @@ export default function Delete_product() {
   return (
     <>
       <form onSubmit={fetchData}>
-        <label htmlFor="productName">Enter product name: </label>
+        <Label htmlFor="productName" text="Enter product name"/>
         <Textbox name="productName" value={productName} onChange={(e) => setProductName(e.target.value)} />
         <Button type='submit' text="Search product"/>
       </form>
       
       {product.length > 0 && (
         <form onSubmit={deleteData}>
-          <label htmlFor="productId">Enter product ID to delete : </label>
+          <Label htmlFor="productId" text="Enter product ID to delete"/>
           <Textbox name="productId" value={productId} onChange={(e) => setProductId(e.target.value)} />
           <Button type='submit' text="Search"/>
         </form>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../../components/Button'
 import Textbox from '../../components/Textbox';
+import Label from '../../components/Label/Label';
 export default function Delete_user() {
   const [username, setUsername] = useState("")
 
@@ -38,7 +39,7 @@ export default function Delete_user() {
       <div>
         <h4>Delete user</h4>
         <form action="" onSubmit={handleSubmit}>
-          <label htmlFor="username">Username</label>
+          <Label htmlFor="username" text="Enter username"/>
           <Textbox id='username' value={username} onChange={(e) => setUsername(e.target.value)}
             required
           />

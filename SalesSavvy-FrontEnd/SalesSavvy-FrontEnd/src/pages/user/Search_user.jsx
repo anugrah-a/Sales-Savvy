@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from "../../style/signinUp.module.css"
 import Button from '../../components/Button'
 import Textbox from '../../components/Textbox'
+import Label from '../../components/Label/Label'
 export default function Search_user() {
   const [username, setUsername] = useState("")
   const [user, setUser] = useState("")
@@ -37,7 +38,7 @@ export default function Search_user() {
       <h4>Search user</h4>
       <div>
         <form onSubmit={handleSubmit} >
-          <label htmlFor="username">Enter username</label>
+          <Label htmlFor="username" text="Enter username" />
           <Textbox id='username' value={username} onChange={(e) => { setUsername(e.target.value) }}
           />
           <Button type='submit' text="Search user"/>

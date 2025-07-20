@@ -1,7 +1,10 @@
 import React from 'react'
-
-export default function Label() {
+import './label.css'
+export default function Label({htmlFor, text, className = ''}) {
   return (
-    <label htmlFor=""></label>
+    <label htmlFor={htmlFor}
+      className={`label ${className}`}>
+      {text}
+    </label>
   )
 }

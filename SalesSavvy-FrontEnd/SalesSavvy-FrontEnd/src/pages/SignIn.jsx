@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from "../style/signinUp.module.css";
 import Button from '../components/Button';
 import Textbox from '../components/Textbox';
+import Label from '../components/Label/Label';
 
 export default function SignIn() {
 	const [username, setUsername] = useState("")
@@ -56,11 +57,11 @@ export default function SignIn() {
 			<h4 className={styles.h4}>Sign In</h4>
 
 			<form className={styles.form} onSubmit={handleSubmit}>
-				<label htmlFor="username">Username</label>
+				<Label htmlFor="username" text ="Username"/>
 				<Textbox name ="username" value={username}
 					onChange={(e) => setUsername(e.target.value)}/>
 				<br /><br />
-				<label htmlFor="password">Password</label>
+				<Label htmlFor="password" text = "Password"/>
 				<Textbox type="password" name='password' value={password}
 					onChange={(e) => setPassword(e.target.value)}/>
 				<br /><br />

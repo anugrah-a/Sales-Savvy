@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from '../../components/Button'
 import Textbox from '../../components/Textbox'
+import Label from '../../components/Label/Label'
 export default function Search_product() {
   const [productName, setProductName] = useState("")
   const [product, setProduct] = useState([])
@@ -41,7 +42,7 @@ export default function Search_product() {
   return (
     <>
       <form onSubmit={fetchData}>
-        <label htmlFor="productName">Product name: </label>
+        <Label htmlFor="productName" text="Product name" />
         <Textbox name="productName" value={productName} onChange={(e) => setProductName(e.target.value)} />
         <Button type='submit' text="Search"/>
       </form>

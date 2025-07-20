@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import Textbox from '../../components/Textbox'
+import Label from '../../components/Label/Label'
 export default function Add_product() {
 
 	const [name, setName] = useState("")
@@ -45,29 +46,26 @@ export default function Add_product() {
     <>
       <h4>Add Product</h4>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Product name </label>
+        <Label htmlFor='name' text="Product name" />
         <Textbox id='name' name="name" value={name}
           onChange={(e) => setName(e.target.value)} />
         <br /><br />
 
-        <label htmlFor='description'>description </label>
+        <Label htmlFor='description' text="Description" />
         <Textbox id='description' name="description" value={description}
           onChange={(e) => setDescription(e.target.value)} />
         <br /><br />
 
-        <label htmlFor='price'>Price </label>
+        <Label htmlFor='price' text="Price" />
         <Textbox id='price' name="price" value={price}
           onChange={(e) => setPrice(e.target.value)} />
         <br /><br />
-
-       
-
-        <label htmlFor='photo'>Photo </label>
+        <Label htmlFor='photo' text="Photo" />
         <Textbox id='photo' name="photo" value={photo}
           onChange={(e) => setPhoto(e.target.value)} />
         <br /><br />
 
-        <label htmlFor="category">Category </label>
+        <Label htmlFor='category' text="Category" />
         <Textbox id='category' name='category' value={category}
           onChange={(e) => setCategory(e.target.value)}/>
 
