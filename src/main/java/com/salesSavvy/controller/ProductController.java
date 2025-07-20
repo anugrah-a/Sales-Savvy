@@ -45,7 +45,6 @@ public class ProductController {
 		return productService.addProduct(product);
 		
 	}
-	
 	@PutMapping("/updateProduct") 
 	public ResponseEntity<?> updateProduct(@RequestBody Product product) {
 		//TODO: process POST request
