@@ -25,7 +25,6 @@ import com.salesSavvy.service.CartService;
 import com.salesSavvy.service.ProductService;
 import com.salesSavvy.service.UsersService;
 
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/products")
