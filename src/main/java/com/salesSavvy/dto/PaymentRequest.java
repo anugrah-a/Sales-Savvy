@@ -10,7 +10,7 @@ public class PaymentRequest {
 	}
 	public PaymentRequest() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public String getUsername() {
 		return username;
@@ -28,8 +28,5 @@ public class PaymentRequest {
 	public String toString() {
 		return "PaymentRequest [username=" + username + ", amount=" + amount + "]";
 	}
-	
-	
-	
 
 }
