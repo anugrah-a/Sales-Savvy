@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.salesSavvy.dto.UserUpdate;
 import com.salesSavvy.dto.UsernameRequest;
 import com.salesSavvy.entity.Users;
-import com.salesSavvy.entity.userLoginData;
+import com.salesSavvy.entity.UserLoginData;
 import com.salesSavvy.service.ProductService;
 import com.salesSavvy.service.UsersService;
 
@@ -50,7 +50,7 @@ public class UsersController {
 	
 	
 	@PostMapping("/signIn")
-	public String signIn(@RequestBody userLoginData user) {
+	public String signIn(@RequestBody UserLoginData user) {
 		//TODO: process POST request
 		String msg = "";
 		String username = user.getUsername();

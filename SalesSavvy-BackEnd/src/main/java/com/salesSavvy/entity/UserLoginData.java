@@ -1,14 +1,14 @@
 package com.salesSavvy.entity;
 
 
-public class userLoginData {
+public class UserLoginData {
 	String username;
 	String password;
-	public userLoginData() {
+	public UserLoginData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public userLoginData(String username, String password) {
+	public UserLoginData(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
