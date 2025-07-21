@@ -42,27 +42,23 @@ public class ProductController {
 			return "error";
 		}
 		return productService.addProduct(product);
-		
+
 	}
 	@PutMapping("/updateProduct") 
 	public ResponseEntity<?> updateProduct(@RequestBody Product product) {
 		//TODO: process POST request
-		
 		return ResponseEntity.ok().body("product updated");
 	}
-	
+
 	@GetMapping("/searchProduct")
 	public ResponseEntity<?> searchProduct(@RequestParam String productName) {
-		
 		if(productName.isEmpty()) {
 			return ResponseEntity.badRequest().body("Product name cannot be null");
 		}
 		List<Product> products = productService.getProductByName(productName);
 		return ResponseEntity.ok(products);
-		
-		
 	}
-	
+
 	@DeleteMapping("/deleteProduct")
 	public ResponseEntity<?> removeProduct(@RequestParam Integer productId) {
 		if(productId  == null ) {
@@ -74,41 +70,40 @@ public class ProductController {
 		productService.deleteProduct(productId);
 		return ResponseEntity.ok().body("Product deleted");
 	}
-	
+
 	@GetMapping("/getAllProduct")
 	public List<Product> getAllProduct() {
 		return productService.getAllProduct();
 	}
-	
+
 	@PostMapping("/addToCart")
 	public String addToCart(@RequestBody CartData data) {
 		//TODO: process POST request
-		
 		String username = data.getUsername();
 		Users user = usersService.getUser(username);
 		if(user == null) {
 			return  "user not found";
 		}
-		
 		Product product = productService.searchProductById(data.getProductId());
+		
 		if(product == null) {
 			return "product not found";
 		}
-		
 		Cart cart = user.getCart();
+		
 		if(cart == null) {
 			cart = new Cart();
 			cart.setUser(user);
 			user.setCart(cart);
 			cartService.addCart(cart);	
 		}
-		
 		List<CartData> items = cart.getCartItems();
+		
 		if(items == null) {
 			items = new ArrayList<>();
 		}
 		boolean found = false;
-		
+
 		for(CartData cd : items) {
 			if(cd.getProduct().getId() == (product.getId())) {
 				cd.setQuantity(cd.getQuantity() + data.getQuantity());
@@ -116,7 +111,7 @@ public class ProductController {
 				break;
 			}
 		}
-		
+
 		if(!found) {
 			CartData newData = new CartData();
 			newData.setCart(cart);
@@ -128,7 +123,7 @@ public class ProductController {
 		cartService.addCart(cart);
 		return "cart added";
 	}
-	
+
 	@GetMapping("/getCart/{username}")
 	public ResponseEntity<?> getCart(@PathVariable String username) {
 		try {
@@ -140,17 +135,30 @@ public class ProductController {
 				return ResponseEntity.ok(new ArrayList<>());
 			}
 			//System.out.println(u.getCart().getCartItems());
-			 List<CartData> items = u.getCart().getCartItems();
-			 return ResponseEntity.ok(items);
+			List<CartData> items = u.getCart().getCartItems();
+			return ResponseEntity.ok(items);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occured while fetching cart");
 		}
-		
+
 	}
-	
-	
+
+	@GetMapping("/getProductById")
+	public ResponseEntity<?> getProductById(@RequestParam Integer productId) {
+		if(productId  == null ) {
+			return ResponseEntity.badRequest().body("Id cannot be null");
+		}
+		if(productService.searchProductById(productId) == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product does not exist");
+		}
+		Product product = productService.searchProductById(productId);
+		return ResponseEntity.ok(product);
+	}
+
+
+
 	@DeleteMapping("/clearCart")
 	public void clearCart(String username) {
 		cartService.clearCart(username);
