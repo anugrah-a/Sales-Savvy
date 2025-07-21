@@ -158,8 +158,8 @@ public class ProductController {
 		return ResponseEntity.ok(product);
 	}
 
-	@PutMapping("updateUser/{productId}")
-	public ResponseEntity<?> putMethodName(@PathVariable Integer productId, @RequestBody UpdateProduct newProduct) {
+	@PutMapping("updateProduct/{productId}")
+	public ResponseEntity<?> updateProduct(@PathVariable Integer productId, @RequestBody UpdateProduct newProduct) {
 		//TODO: process PUT request
 		Product existingProduct = productService.searchProductById(productId);
 		if(existingProduct == null) {
