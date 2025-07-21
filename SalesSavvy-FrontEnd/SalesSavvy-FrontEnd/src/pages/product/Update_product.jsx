@@ -9,6 +9,10 @@ export default function Update_product() {
   const [product, setProduct] = useState("")
   const [error, setError] = useState("")
   const [productId, setProductId] = useState("")
+  const [description,setDescription] = useState("")
+  const [price, setPrice] = useState("")
+  const [photo, setPhoto] = useState("")
+  const [category, setCategory] = useState("")
   async function fetchProductByName(e) {
     e.preventDefault()
     setError("")
@@ -39,10 +43,10 @@ export default function Update_product() {
     }
   }
 
-  async function fetchProductById() {
+  async function fetchProductById(e) {
     e.preventDefault()
     setError("")
-    setProductId("")
+    setProduct("")
 
     try {
       const resp = await fetch(`http://localhost:8080/products/getProductById?productId=${productId}`, {
@@ -52,11 +56,20 @@ export default function Update_product() {
       if (!resp.ok) {
         const message = await resp.text();
         setError(message);
+        alert(message)
       }
       const data = await resp.json();
+      setProduct(data)
+      setProductName(data.name)
+      setCategory(data.category)
+      setDescription(data.description)
+      setPrice(data.price)
+      setPhoto(data.photo)
+
     }
     catch (error) {
-
+      setError(error.message)
+      console.log(error.message || "unknown error caught")
     }
 
   }

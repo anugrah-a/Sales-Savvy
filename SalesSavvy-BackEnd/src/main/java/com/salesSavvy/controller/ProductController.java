@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.salesSavvy.dto.UpdateProduct;
 import com.salesSavvy.entity.Cart;
 import com.salesSavvy.entity.CartData;
 import com.salesSavvy.entity.Product;
@@ -157,7 +158,15 @@ public class ProductController {
 		return ResponseEntity.ok(product);
 	}
 
-
+	@PutMapping("updateUser/{productId}")
+	public ResponseEntity<?> putMethodName(@PathVariable Integer productId, @RequestBody UpdateProduct newProduct) {
+		//TODO: process PUT request
+		Product existingProduct = productService.searchProductById(productId);
+		if(existingProduct == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+		}
+		return ResponseEntity.ok(null);
+	}
 
 	@DeleteMapping("/clearCart")
 	public void clearCart(String username) {
