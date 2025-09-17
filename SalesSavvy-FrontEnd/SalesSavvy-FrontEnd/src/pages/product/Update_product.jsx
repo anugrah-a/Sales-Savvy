@@ -19,7 +19,7 @@ export default function Update_product() {
     setProductList([]);
     setProductId("")
     try {
-      const resp = await fetch(`http://localhost:8080/products/searchProduct?productName=${productName}`, {
+      const resp = await fetch(`http://localhost:8080/products/updateProduct?productName=${productName}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

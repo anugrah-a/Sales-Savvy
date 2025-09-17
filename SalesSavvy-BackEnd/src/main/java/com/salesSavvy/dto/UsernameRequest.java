@@ -1,6 +1,9 @@
 package com.salesSavvy.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UsernameRequest {
+	@NotBlank(message = "Username required")
 	private String username;
 
 	public String getUsername() {
